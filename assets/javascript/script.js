@@ -3,14 +3,15 @@
 // in the html.
 
 
+
+// gets the element with an id of 'currentDay' and stores it in a variable
+var currentDay = $('#currentDay');
+// gets the element with a class of 'saveBtn' and stores it in a variable
+var saveButton = $('.saveBtn');
+// gets the element with a class of 'time-block' and stores it in a variable
+var timeBlock = $('.time-block');
 // gets the element with an id of 'currentTime' and stores it in a variable
 var currentTime = document.getElementById('currentTime');
-// gets the element with an id of 'currentDay' and stores it in a variable
-var currentDay = document.getElementById('currentDay');
-// gets the element with a class of 'saveBtn' and stores it in a variable
-var saveButton = document.getElementsByClassName('saveBtn');
-// gets the element with a class of 'time-block' and stores it in a variable
-var timeBlock = document.getElementsByClassName('time-block');
 
 
 
@@ -38,8 +39,8 @@ function displayDate() {
 
 // function for displaying the current time to the header
 function displayTime() {
-  let time = dayjs().format('hh:mm:ss A');
-  $(currentTime.innerText = time);
+  var time = dayjs().format('hh:mm:ss A');
+  currentTime.innerText = time;
   return;
 };
 
@@ -64,7 +65,12 @@ $(timeBlock).each(function() {
 
 // calls the function for displaying the date to the header
 $(displayDate());
+
 // calls the function for displaying the time to the header and uses "setInterval()" to update time
 $(setInterval(displayTime));
+
 // calls the function for the save button and saves the user input to local storage
 $(userSave());
+
+
+
