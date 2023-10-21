@@ -1,31 +1,21 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-
-
-
 // gets the element with an id of 'currentDay' and stores it in a variable
 var currentDay = $('#currentDay');
+
 // gets the element with a class of 'saveBtn' and stores it in a variable
 var saveButton = $('.saveBtn');
+
 // gets the element with a class of 'time-block' and stores it in a variable
 var timeBlock = $('.time-block');
+
 // gets the element with an id of 'currentTime' and stores it in a variable
 var currentTime = document.getElementById('currentTime');
 
+// gets the hour from dayjs
+var dayjsHour = dayjs().format('H');
 
 
 
-$(function () {
 
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-
-
-});
 
 
 
@@ -55,22 +45,49 @@ function userSave() {
 };
 
 // function for getting user input saved in local storage and sets the values to the corresponding textarea elements
-$(timeBlock).each(function() {
+$(timeBlock).each(function () {
   var hour = $(this).attr('id');
   var value = localStorage.getItem(hour);
   $(this).children('.description').val(value);
 });
 
 
+// colors are changed according to past, present, or future
+$(function pastPresentFuture() {
+  $(timeBlock).each(function () {
+    var timeBlockHour = parseInt(this.id);
+    $(this).toggleClass('present', timeBlockHour === dayjsHour);
+    $(this).toggleClass('past', timeBlockHour < dayjsHour);
+    $(this).toggleClass('future', timeBlockHour > dayjsHour);
+    return;
+  })
+}
+);
+
+// function removes and adds classes according to the time
+function addClasses() {
+  $(timeBlock).each(function () {
+    var timeBlockHour = parseInt(this.id);
+    if (timeBlockHour === dayjsHour) {
+      $(this).removeClass('past future').addClass('present');
+    } else if (timeBlockHour < dayjsHour) {
+      $(this).removeClass('future present').addClass('past');
+    } else {
+      $(this).removeClass('past present').addClass('future');
+    }
+  });
+}
+
+
+
 
 // calls the function for displaying the date to the header
 $(displayDate());
-
-// calls the function for displaying the time to the header and uses "setInterval()" to update time
-$(setInterval(displayTime));
 
 // calls the function for the save button and saves the user input to local storage
 $(userSave());
 
 
+// calls the function for displaying the time to the header and uses "setInterval()" to update time
+$(setInterval(displayTime));
 
