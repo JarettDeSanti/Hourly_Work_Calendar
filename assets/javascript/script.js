@@ -7,12 +7,14 @@ var saveButton = $('.saveBtn');
 // gets the element with a class of 'time-block' and stores it in a variable
 var timeBlock = $('.time-block');
 
+// gets the element with an id of 'feedback'
+var buttonFeedback = document.getElementById('feedback');
+
 // gets the element with an id of 'currentTime' and stores it in a variable
 var currentTime = document.getElementById('currentTime');
 
 // gets the hour from dayjs
 var dayjsHour = dayjs().format('H');
-
 
 
 
@@ -40,6 +42,7 @@ function userSave() {
     var hour = $(this).parent().attr('id');
     var userTextInput = $(this).siblings('.description').val();
     localStorage.setItem(hour, userTextInput);
+    buttonFeedback.style.display = "block"
     return;
   })
 };

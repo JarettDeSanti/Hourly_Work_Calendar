@@ -3,6 +3,21 @@ body {
   font-size: 16px;
 }
 
+#feedback {
+  text-align: center;
+  margin-bottom: 10px;
+  display: none;
+}
+
+.feedback-localStorage {
+  color: red;
+}
+
+.feedback-check {
+  font-size: 22px;
+  color: green;
+}
+
 textarea {
   background: transparent;
   border: none;
