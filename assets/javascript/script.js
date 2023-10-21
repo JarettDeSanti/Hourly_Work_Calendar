@@ -87,7 +87,6 @@ $(displayDate());
 // calls the function for the save button and saves the user input to local storage
 $(userSave());
 
-
 // calls the function for displaying the time to the header and uses "setInterval()" to update time
 $(setInterval(displayTime));
 
