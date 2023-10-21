@@ -19,7 +19,7 @@ Deployed live site URL: https://jarettdesanti.github.io/Hourly_Work_Calendar/
 
 ## Screenshot
 
-![Alt text](Hourly_Work_Calendar_Screenshot.png)
+![Work_Day_Schedule_Screenshot](https://github.com/JarettDeSanti/Hourly_Work_Calendar/assets/143453072/0b9d6688-a607-4cb1-95a5-706bd6c769bb)
 
 ## Acknowledgements
 
