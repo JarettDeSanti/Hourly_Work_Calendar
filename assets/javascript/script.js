@@ -56,7 +56,7 @@ $(timeBlock).each(function () {
 $(function pastPresentFuture() {
   $(timeBlock).each(function () {
     var timeBlockHour = parseInt(this.id);
-    $(this).toggleClass('present', timeBlockHour === dayjsHour);
+    $(this).toggleClass('present', timeBlockHour == dayjsHour);
     $(this).toggleClass('past', timeBlockHour < dayjsHour);
     $(this).toggleClass('future', timeBlockHour > dayjsHour);
     return;
@@ -68,7 +68,7 @@ $(function pastPresentFuture() {
 function addClasses() {
   $(timeBlock).each(function () {
     var timeBlockHour = parseInt(this.id);
-    if (timeBlockHour === dayjsHour) {
+    if (timeBlockHour == dayjsHour) {
       $(this).removeClass('past future').addClass('present');
     } else if (timeBlockHour < dayjsHour) {
       $(this).removeClass('future present').addClass('past');
